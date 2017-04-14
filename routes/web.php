@@ -34,3 +34,6 @@ Route::get('/controller', 'HelloController@index');
 
 // Utilisation d'un contrôleur pour afficher une vue 
 Route::get('/controllervue', 'HelloControllerView@index');
+
+// Ressources 
+Route::resource('/test', 'HelloController');
