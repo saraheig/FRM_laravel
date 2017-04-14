@@ -11,6 +11,26 @@
 |
 */
 
+// Default route 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/hello', function () {
+    echo 'Hello World';
+});
+
+Route::get('/hello/{id}', function ( $id ) {
+    echo 'Hello ' . $id;
+});
+
+// Utilisation d'une vue (sans contrôleur)
+Route::get('/hi/{param}', function ( $paramuser ) {
+    return view('hi')->with('prenom', $paramuser);
+});
+
+// Utilisation d'un contrôleur (sans vue)
+Route::get('/controller', 'HelloController@index');
+
+// Utilisation d'un contrôleur pour afficher une vue 
+Route::get('/controllervue', 'HelloControllerView@index');
