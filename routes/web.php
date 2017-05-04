@@ -37,3 +37,16 @@ Route::get('/controllervue', 'HelloControllerView@index');
 
 // Ressources 
 Route::resource('/test', 'HelloController');
+
+// Utilisation d'un modèle avec un contrôleur et une vue 
+// Route::get('/model', 'TasksController@index')->name('model');
+
+// Route::get('/model/{id}', 'TasksController@show')->name('model.show');
+
+Route::resource('model', 'TasksController');
+// Ca crée automatiquement toutes les routes pour le contrôleur TasksController
+
+Route::get('/', 'TasksController@index'); // pour dire quelle est la page par défaut 
+
+Route::resource('/tasks', 'TasksView'); // pas d'@index car resource -> toutes les actions 
+// car on a besoin de post -> car on crée une nouvelle ressource avec le formulaire
