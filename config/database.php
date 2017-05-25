@@ -69,10 +69,14 @@ return [
         
         'heroku' => [  
             'driver'   => 'pgsql',
-            'host'     => parse_url(getenv("DATABASE_URL"))["host"],
+            /*'host'     => parse_url(getenv("DATABASE_URL"))["host"],
             'database' => substr(parse_url(getenv("DATABASE_URL"))["path"], 1),
             'username' => parse_url(getenv("DATABASE_URL"))["user"],
-            'password' => parse_url(getenv("DATABASE_URL"))["pass"],
+            'password' => parse_url(getenv("DATABASE_URL"))["pass"],*/
+            'host'     => parse_url(getenv("DATABASE_URL"), PHP_URL_HOST),
+            'database' => substr(parse_url(getenv("DATABASE_URL"))["path"], 1),
+            'username' => parse_url(getenv("DATABASE_URL"), PHP_URL_USER),
+            'password' => parse_url(getenv("DATABASE_URL"), PHP_URL_PASS),
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',

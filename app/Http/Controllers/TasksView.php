@@ -30,6 +30,13 @@ class TasksView extends Controller
     }
     
     public function show() {
-        return Task::find();
+    
+        try {
+            $task = Task::findOrFail($id);
+        }
+        catch(Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            // return erreur
+        }
+        // return Task::find();
     }
 }
